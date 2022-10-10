@@ -1,0 +1,40 @@
+string file = "/content/drive/MyDrive/Texto/texto.txt";
+
+void load_file_in_list(string filename, ListaD<string> & L)
+{
+  string nombre;
+  ifstream archivo;
+  archivo.open(filename, ios::in);
+  while(!archivo.eof())
+  {
+    getline(archivo, nombre);
+    L.Add_Last(nombre);
+  }
+  archivo.close();  
+}
+
+
+void Test2(string file, ListaD<string> & spanish_words)
+{  
+  vector<string> nombre;
+  string tmp;
+  ifstream archivo(file);  
+  while(archivo>>tmp)
+  {        
+    nombre.push_back(tmp);    
+  }
+  archivo.close();    
+  int j=0;
+  for(int i=0;i<nombre.size();++i)
+  {    
+    if(spanish_words.find(nombre[i])==false){      
+      j++;
+    }
+  }
+  cout<<j;
+  
+}
+
+
+ListaD<string> L;
+    load_file_in_list(file,L);    
